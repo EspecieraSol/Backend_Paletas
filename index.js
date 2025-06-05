@@ -2,7 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const dbConnection = require('./src/config/db')
-dotenv.config();
+dotenv.config()
+
 //importo rutas
 const registrarseRoutes = require('./src/routes/registrarse');
 const authRoutes = require('./src/routes/auth');
