@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const dbConnection = require('./src/config/db')
+const dbConnection = require('./src/config/db');
 dotenv.config()
 
 //importo rutas
@@ -11,7 +11,6 @@ const userRoutes = require('./src/routes/usuario');
 const productoRoutes = require('./src/routes/producto');
 const carritoRoutes = require('./src/routes/carrito');
 const mercadopagoRoutes = require('./src/routes/mercadopago');
-const correoArgRoutes = require('./src/routes/correoArg');
 
 const app = express();
 
