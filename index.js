@@ -28,7 +28,6 @@ app.use('/usuario', userRoutes);
 app.use('/producto', productoRoutes);
 app.use('/carrito', carritoRoutes);
 app.use('/mercadopago', mercadopagoRoutes);
-app.use('/correoArg', correoArgRoutes);
 
 //puerto
 const PORT = process.env.PORT || 3002;

@@ -2,7 +2,7 @@ const Usuario = require('../models/usuario');
 const CryptoJS = require('crypto-js');
 const Producto = require('../models/producto');
 const { normalizoProductos } = require('../helpers/normalizoData');
-const { normalizaUser, normalizaUsuarios } = require('../helpers/normalizauser');
+const { normalizaUsuario, normalizaUsuarios } = require('../helpers/normalizaUser');
 
 
 //trae usuarios 
@@ -30,7 +30,7 @@ const traerUsuario = async (req, res) => {
                 msg: 'Usuario no encontrado'
             });
         }
-        const userNormalizado = normalizaUser(usuario);
+        const userNormalizado = normalizaUsuario(usuario);
         res.json(userNormalizado);
     }
     catch (error) {
@@ -50,7 +50,7 @@ const traerUsuarioPorDni = async (req, res) => {
         if(!usuario){
             return res.status(404).json({msg: 'El DNI no está registrado'});
         }
-        const userNormalizado = normalizaUser(usuario);
+        const userNormalizado = normalizaUsuario(usuario);
         res.json(userNormalizado); 
     }catch (error) {
         console.error('Error al traer el usuario:', error);

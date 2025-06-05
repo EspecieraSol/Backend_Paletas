@@ -1,6 +1,6 @@
 const Usuario = require('../models/usuario');
 const CryptoJS = require('crypto-js');
-const { enviarCorreoConfirmacion } = require('./envioEmail');
+
 
 //registrarse
 const registrarse = async (req, res) => {

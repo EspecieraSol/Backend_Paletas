@@ -3,13 +3,11 @@ const {
     traerUsuarios, traerUsuario, traerUsuarioPorDni, modificarUsuario, 
     eliminarUsuario, agregarFavoritos, eliminarFavoritos, traerFavoritos, modificarPassword
 } = require('../controllers/usuario');
-const { confirmarCorreo } = require('../controllers/envioEmail');
+
 
 const router = express.Router();
 
 
-//envio de email de confirmación
-router.post('/confirmar', confirmarCorreo);
 
 //trae usuarios
 router.get('/', traerUsuarios);
