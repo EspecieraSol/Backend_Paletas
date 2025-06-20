@@ -4,9 +4,7 @@ const {
     eliminarUsuario, agregarFavoritos, eliminarFavoritos, traerFavoritos, modificarPassword
 } = require('../controllers/usuario');
 
-
 const router = express.Router();
-
 
 
 //trae usuarios

@@ -1,8 +1,8 @@
 const { google } = require("googleapis");
 const readline = require("readline");
 
-const CLIENT_ID = "762457120072-v8a5ga3qk66ldlc30o0c4c04f2jugsqp.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 
 const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);

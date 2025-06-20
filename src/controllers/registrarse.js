@@ -1,7 +1,6 @@
 const Usuario = require('../models/usuario');
 const CryptoJS = require('crypto-js');
 
-
 //registrarse
 const registrarse = async (req, res) => {
     const { nombre, apellido, dni, email, password, direccion, telefono,  } = req.body; 

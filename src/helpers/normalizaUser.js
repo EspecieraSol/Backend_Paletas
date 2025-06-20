@@ -1,7 +1,7 @@
 const { use } = require("../routes/usuario");
 
 //normaliza usuario
-const normalizaUsuario = (user) => {
+const normalizaUser = (user) => {
     return {
         id: user._id,
         nombre: user.nombre,
@@ -22,6 +22,6 @@ const normalizaUsuarios = (usuarios) => {
 };
 
 module.exports = {
-    normalizaUsuario,
+    normalizaUser,
     normalizaUsuarios
 };

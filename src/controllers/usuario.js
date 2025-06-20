@@ -1,8 +1,9 @@
+const mongoose = require('mongoose');
 const Usuario = require('../models/usuario');
 const CryptoJS = require('crypto-js');
 const Producto = require('../models/producto');
 const { normalizoProductos } = require('../helpers/normalizoData');
-const { normalizaUsuario, normalizaUsuarios } = require('../helpers/normalizaUser');
+const { normalizaUser, normalizaUsuarios } = require('../helpers/normalizauser');
 
 
 //trae usuarios 
@@ -23,23 +24,25 @@ const traerUsuarios = async (req, res) => {
 const traerUsuario = async (req, res) => {
     try {
         const { id } = req.params; 
+
+        // Verificar si el ID es válido
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'El ID proporcionado no es válido.' });
+        }
+
         const usuario = await Usuario.findById(id);
+        const userNormalizado = normalizaUser(usuario);
 
         if (!usuario) {
-            return res.status(404).json({
-                msg: 'Usuario no encontrado'
-            });
+            return res.status(404).json({ error: 'Usuario no encontrado.' });
         }
-        const userNormalizado = normalizaUsuario(usuario);
-        res.json(userNormalizado);
-    }
-    catch (error) {
+
+        res.status(200).json(userNormalizado);
+    } catch (error) {
         console.error('Error al traer el usuario:', error);
-        res.status(500).json({
-            msg: 'Error al traer el usuario'
-        });        
+        res.status(500).json({ error: 'Error interno del servidor.' });
     }
-}
+};
 
 //trae usuario por DNI
 const traerUsuarioPorDni = async (req, res) => {
@@ -50,7 +53,7 @@ const traerUsuarioPorDni = async (req, res) => {
         if(!usuario){
             return res.status(404).json({msg: 'El DNI no está registrado'});
         }
-        const userNormalizado = normalizaUsuario(usuario);
+        const userNormalizado = normalizaUser(usuario);
         res.json(userNormalizado); 
     }catch (error) {
         console.error('Error al traer el usuario:', error);

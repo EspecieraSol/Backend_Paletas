@@ -51,7 +51,7 @@ const login = async (req, res) => {
 };
 
 //para log google
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 //log google
 const googleLogin = async (req, res) => {
     const { tokenId } = req.body; 
